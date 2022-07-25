@@ -3,7 +3,7 @@
 If you already have a Kibo Commerce account and want to use your current store, then copy the `.env.template` file in this directory to `.env.local` in the main directory (which will be ignored by Git):
 
 ```bash
-cp packages/kibocommerce/.env.template .env.local
+cp packages/kibocommerce/.env .env.local
 ```
 
 Then, set the environment variables in `.env.local` to match the ones from your store.

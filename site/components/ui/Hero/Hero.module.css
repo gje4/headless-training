@@ -3,7 +3,7 @@
 }
 
 .title {
-  @apply text-accent-0 font-extrabold text-4xl leading-none tracking-tight;
+  @apply text-accent-4 font-extrabold text-4xl leading-none tracking-tight;
 }
 
 .description {

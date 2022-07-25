@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, {CSSProperties, FC} from 'react'
 import { Container } from '@components/ui'
 import { ArrowRight } from '@components/icons'
 import s from './Hero.module.css'
@@ -7,11 +7,14 @@ interface HeroProps {
   className?: string
   headline: string
   description: string
+  image?: string
 }
 
-const Hero: FC<HeroProps> = ({ headline, description }) => {
+const Hero: FC<HeroProps> = ({ headline, description , image}) => {
+  const styles: CSSProperties = { backgroundImage: `url(${image})` }
+
   return (
-    <div className="bg-accent-9 border-b border-t border-accent-2">
+    <div className="bg-center" style={styles}>
       <Container>
         <div className={s.root}>
           <h2 className={s.title}>{headline}</h2>

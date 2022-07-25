@@ -62,7 +62,7 @@ The app imports from the provider directly instead of the core commerce folder (
 
 Open [/site/commerce-config.js](/site/commerce-config.js) and add the provider name to the list in `PROVIDERS`.
 
-Then, open [/site/.env.template](/site/.env.template) and add the provider name to the list there too.
+Then, open [/site/.env.template](/site/.env) and add the provider name to the list there too.
 
 ## Adding the provider hooks
 

@@ -4,6 +4,7 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import {getAllEntries} from "@lib/api/cms";
 
 export async function getStaticProps({
   preview,
@@ -24,9 +25,12 @@ export async function getStaticProps({
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
 
+  const content = await getAllEntries('home_page')
+  const mainContent: any = content[0]
   return {
     props: {
       products,
+      mainContent,
       categories,
       brands,
       pages,
@@ -36,8 +40,9 @@ export async function getStaticProps({
 }
 
 export default function Home({
-  products,
+  products,mainContent
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log("content", mainContent)
   return (
     <>
       <Grid variant="filled">
@@ -59,8 +64,9 @@ export default function Home({
         ))}
       </Marquee>
       <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
+        headline={mainContent?.first_banner?.title}
+        description={mainContent?.first_banner?.description}
+        image={mainContent?.first_banner?.background_image?.url}
       />
       <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
